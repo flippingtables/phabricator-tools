@@ -147,7 +147,8 @@ def update_task(
         owner=None,
         ccs=None,
         projects=None,
-        comment=None):
+        comment=None,
+        status=None):
     """Update a Maniphest task using the supplied 'conduit'.
 
     :conduit: supports call()
@@ -179,6 +180,8 @@ def update_task(
         d['projectPHIDs'] = projects
     if comment is not None:
         d['comments'] = comment
+    if status is not None:
+        d['status'] = status
     response = conduit("maniphest.update", d)
     return CreateTaskResponse(**response)
 

@@ -116,6 +116,13 @@ def setupParser(parser):
         help='an optional comment to make on the task',
         default=None,
         type=str)
+    opt.add_argument(
+        '--status',
+        '-s',
+        metavar='STRING',
+        help='an optional status to assign to the task',
+        default=None,
+        type=str)
 
     output.add_argument(
         '--format-summary',
@@ -170,7 +177,8 @@ def process(args):
         owner,
         ccs,
         projects,
-        args.comment)
+        args.comment,
+        args.status)
 
     if args.format_id:
         print(result.id)
